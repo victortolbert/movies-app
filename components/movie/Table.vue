@@ -103,71 +103,88 @@ export default {
                   <th
                     scope="col"
                     class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
-                    @click="sort('title')"
                   >
-                    <div class="flex items-center space-x-1">
+                    <button @click="sort('title')" type="button" lass="flex items-center space-x-1">
                       <span>Title</span>
                       <span v-if="'title' === currentSortCol">
                         <BaseIcon
                           :name="currentSortDir === 'asc' ? 'sort-ascending' : 'sort-descending'"
                         />
                       </span>
-                    </div>
+                    </button>
                   </th>
 
                   <th
                     scope="col"
                     class="px-6 py-3 text-xs font-medium tracking-wider text-center text-gray-500 uppercase"
-                    @click="sort('vote_count')"
                   >
-                    <div class="flex items-center space-x-1 whitespace-nowrap">
+                    <button
+                      @click="sort('vote_count')"
+                      type="button"
+                      class="flex items-center space-x-1 whitespace-nowrap"
+                    >
                       <span>Vote Count</span>
                       <span v-if="'vote_count' === currentSortCol">
                         <BaseIcon
                           :name="currentSortDir === 'asc' ? 'sort-ascending' : 'sort-descending'"
                         />
                       </span>
-                    </div>
+                    </button>
                   </th>
 
                   <th
                     scope="col"
                     class="px-6 py-3 text-xs font-medium tracking-wider text-center text-gray-500 uppercase whitespace-nowrap"
-                    @click="sort('vote_average')"
                   >
-                    <div class="flex items-center w-full space-x-1 whitespace-nowrap">
+                    <button
+                      @click="sort('vote_average')"
+                      class="flex items-center w-full space-x-1 whitespace-nowrap"
+                    >
                       <span>Vote Average</span>
                       <span v-if="'vote_average' === currentSortCol">
                         <BaseIcon
                           :name="currentSortDir === 'asc' ? 'sort-ascending' : 'sort-descending'"
                         />
                       </span>
-                    </div>
+                    </button>
                   </th>
                   <th
                     scope="col"
                     class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase whitespace-nowrap"
-                    @click="sort('overview')"
                   >
-                    <div class="flex items-center w-full space-x-1 whitespace-nowrap">
+                    <button
+                      @click="sort('overview')"
+                      class="flex items-center w-full space-x-1 whitespace-nowrap"
+                    >
                       <span>Overview</span>
                       <span v-if="'overview' === currentSortCol">
                         <BaseIcon
                           :name="currentSortDir === 'asc' ? 'sort-ascending' : 'sort-descending'"
                         />
                       </span>
-                    </div>
+                    </button>
                   </th>
 
                   <th
                     scope="col"
                     class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase whitespace-nowrap"
-                    @click="sort('popularity')"
-                  >Popularity</th>
+                  >
+                    <button
+                      @click="sort('popularity')"
+                      class="flex items-center w-full space-x-1 whitespace-nowrap"
+                    >
+                      <span>Popularity</span>
+                      <span v-if="'overview' === currentSortCol">
+                        <BaseIcon
+                          :name="currentSortDir === 'asc' ? 'sort-ascending' : 'sort-descending'"
+                        />
+                      </span>
+                    </button>
+                  </th>
+
                   <th
                     scope="col"
                     class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase whitespace-nowrap"
-                    @click="sort('vote_average')"
                   ></th>
                 </tr>
               </thead>
