@@ -26,7 +26,7 @@ export default {
 </script>
 
 <template>
-  <section class="w-full p-8 mx-auto mt-4 bg-white shadow-lg rounded-m max-w-8xl">
+  <section class="w-full p-8 mx-auto bg-white shadow-lg rounded-m">
     <p v-if="$fetchState.pending">Fetching movies...</p>
     <p v-else-if="$fetchState.error">An error occurred</p>
     <div v-else>
