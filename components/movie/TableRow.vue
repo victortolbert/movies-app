@@ -11,6 +11,12 @@ export default {
       showNewRating: false,
       newRating: null
     }
+  },
+  methods: {
+    remove(id) {
+      console.log(id)
+      this.$store.commit('REMOVE_MOVIE', id)
+    }
   }
 }
 </script>
@@ -22,30 +28,44 @@ export default {
         <BaseIcon name="heart" :class="movie.isFavorite ? 'text-red-500' : 'text-gray-500'" />
       </button>
     </td>
+
     <td class="px-6 py-4 align-top w-80">
       <div class="flex space-x-2">
         <img class="h-20" :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`" />
         <span>{{ movie.title }}</span>
       </div>
     </td>
+
     <td class="px-6 py-4 text-center align-top">{{ movie.vote_count }}</td>
+
     <td class="px-6 py-4 text-center align-top">
       <input
         v-if="showNewRating"
         @blur="showNewRating = false"
-        type="text"
+        type="number"
+        step="0.1"
+        min="0"
+        max="10"
         class="text-center"
         placeholder="Enter new rating"
         v-model="newRating"
       />
-      <button v-else @dblclick="showNewRating = !showNewRating">{{ movie.vote_average }}</button>
+      <button
+        class="px-4 py-2 rounded-md hover:bg-gray-100"
+        v-else
+        @click="showNewRating = !showNewRating"
+      >{{ movie.vote_average }}</button>
     </td>
+
     <td class="px-6 py-4 align-top">{{ movie.overview }}</td>
+
     <td class="px-6 py-4 text-center align-top">{{ movie.popularity }}</td>
+
     <td class="px-6 py-4 align-top">
-      <div class="flex items-center space-x-4">
-        <button>Delete</button>
-      </div>
+      <button @click="remove(movie.id)" class="flex items-center space-x-2">
+        <span>Delete</span>
+        <BaseIcon name="trash" class="text-gray-400" />
+      </button>
     </td>
   </tr>
 </template>

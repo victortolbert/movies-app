@@ -13,12 +13,14 @@ export const mutations = {
     (state.movies = movies.map(movie => {
       return {
         ...movie,
-        isFavorite: false
+        isFavorite: false,
+        isDeleted: false,
       }
     })),
 
-    REMOVE_MESSAGE(state, messageId) {
-        state.messages = state.messages.filter(message => message.id !== messageId)
+  REMOVE_MOVIE(state, movieId) {
+        console.log(state)
+        state.movies = state.movies.filter(movie => movie.id !== movieId)
     },
 }
 
