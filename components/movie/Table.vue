@@ -125,6 +125,23 @@ export default {
                     </button>
                   </th>
 
+                  <th
+                    scope="col"
+                    class="px-6 py-3 text-left text-gray-500 uppercase whitespace-nowrap"
+                  >
+                    <button
+                      @click="sort('overview')"
+                      class="flex items-center w-full px-3 py-1 space-x-1 text-xs font-semibold tracking-wider uppercase rounded-lg hover:bg-gray-200 whitespace-nowrap"
+                    >
+                      <span>Overview</span>
+                      <span :class="'overview' === currentSortCol ? 'visible' : 'invisible'">
+                        <BaseIcon
+                          :name="currentSortDir === 'asc' ? 'sort-ascending' : 'sort-descending'"
+                        />
+                      </span>
+                    </button>
+                  </th>
+
                   <th scope="col" class="px-6 py-3 text-center text-gray-500">
                     <button
                       @click="sort('vote_count')"
@@ -147,22 +164,6 @@ export default {
                     >
                       <span>Vote Average</span>
                       <span :class="'vote_average' === currentSortCol ? 'visible' : 'invisible'">
-                        <BaseIcon
-                          :name="currentSortDir === 'asc' ? 'sort-ascending' : 'sort-descending'"
-                        />
-                      </span>
-                    </button>
-                  </th>
-                  <th
-                    scope="col"
-                    class="px-6 py-3 text-left text-gray-500 uppercase whitespace-nowrap"
-                  >
-                    <button
-                      @click="sort('overview')"
-                      class="flex items-center w-full px-3 py-1 space-x-1 text-xs font-semibold tracking-wider uppercase rounded-lg hover:bg-gray-200 whitespace-nowrap"
-                    >
-                      <span>Overview</span>
-                      <span :class="'overview' === currentSortCol ? 'visible' : 'invisible'">
                         <BaseIcon
                           :name="currentSortDir === 'asc' ? 'sort-ascending' : 'sort-descending'"
                         />
