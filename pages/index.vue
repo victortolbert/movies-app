@@ -20,7 +20,7 @@ export default {
 <template>
   <p v-if="$fetchState.pending">Fetching movies...</p>
   <p v-else-if="$fetchState.error">An error occurred</p>
-  <div v-else>
+  <div class="p-16" v-else>
     <MovieTable :movies="movies" />
   </div>
 </template>

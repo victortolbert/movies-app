@@ -93,24 +93,16 @@ export default {
       <input @keydown="resetPage" type="search" class placeholder="Search..." v-model="search" />
     </div>
 
-    <div class="flex flex-col">
+    <div class="flex flex-col mt-4">
       <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-          <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+        <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+          <div class="overflow-hidden border-b border-gray-200 shadow sm:rounded-lg">
             <table class="min-w-full divide-y divide-gray-200">
               <thead class="bg-gray-50">
                 <tr>
-                  <!-- <th v-for="(header, index) in sortableHeaders" :key="index" @click="sort(header)">
-              {{ header }}
-              <span v-if="header === currentSortCol">
-                <BaseIcon
-                  :name="[currentSortDir === 'asc' ? 'sort-ascending' : 'sort-descending']"
-                />
-              </span>
-                  </th>-->
                   <th
                     scope="col"
-                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
                     @click="sort('title')"
                   >
                     <div class="flex items-center space-x-1">
@@ -125,10 +117,10 @@ export default {
 
                   <th
                     scope="col"
-                    class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    class="px-6 py-3 text-xs font-medium tracking-wider text-center text-gray-500 uppercase"
                     @click="sort('vote_count')"
                   >
-                    <div class="flex items-center whitespace-nowrap space-x-1">
+                    <div class="flex items-center space-x-1 whitespace-nowrap">
                       <span>Vote Count</span>
                       <span v-if="'vote_count' === currentSortCol">
                         <BaseIcon
@@ -140,10 +132,10 @@ export default {
 
                   <th
                     scope="col"
-                    class="px-6 py-3 whitespace-nowrap text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    class="px-6 py-3 text-xs font-medium tracking-wider text-center text-gray-500 uppercase whitespace-nowrap"
                     @click="sort('vote_average')"
                   >
-                    <div class="flex items-center space-x-1 whitespace-nowrap">
+                    <div class="flex items-center w-full space-x-1 whitespace-nowrap">
                       <span>Vote Average</span>
                       <span v-if="'vote_average' === currentSortCol">
                         <BaseIcon
@@ -154,17 +146,27 @@ export default {
                   </th>
                   <th
                     scope="col"
-                    class="px-6 py-3 whitespace-nowrap text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase whitespace-nowrap"
                     @click="sort('overview')"
-                  >Overview</th>
+                  >
+                    <div class="flex items-center w-full space-x-1 whitespace-nowrap">
+                      <span>Overview</span>
+                      <span v-if="'overview' === currentSortCol">
+                        <BaseIcon
+                          :name="currentSortDir === 'asc' ? 'sort-ascending' : 'sort-descending'"
+                        />
+                      </span>
+                    </div>
+                  </th>
+
                   <th
                     scope="col"
-                    class="px-6 py-3 whitespace-nowrap text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase whitespace-nowrap"
                     @click="sort('popularity')"
                   >Popularity</th>
                   <th
                     scope="col"
-                    class="px-6 py-3 whitespace-nowrap text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase whitespace-nowrap"
                     @click="sort('vote_average')"
                   ></th>
                 </tr>
