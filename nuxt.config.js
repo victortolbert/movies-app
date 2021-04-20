@@ -14,4 +14,7 @@ export default {
   tailwindcss: {
     jit: true
   },
+   generate: {
+    fallback: true
+  }
 }
