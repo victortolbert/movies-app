@@ -1,0 +1,9 @@
+{
+  "name": "@victortolbert/movies-app",
+  "scripts": {
+    "dev": "nuxt"
+  },
+  "dependencies": {
+    "nuxt": "2.15.4"
+  }
+}
