@@ -6,8 +6,10 @@ export default {
       search: '',
       sortableHeaders: [
         'title',
-        'view_count',
-        'popularity'
+        'vote_count',
+        'vote_average',
+        'popularity',
+        'overview',
       ],
       currentSortDir: 'asc',
       currentSortCol: 'id'
@@ -89,25 +91,59 @@ export default {
 <template>
   <div>
     <div>
-      <input @keydown="resetPage" type="search" class placeholder="Search..." v-model="search" />
-    </div>
-
-    <div>
-      <table>
+      <table class="text-sm">
         <thead>
           <tr>
-            <th v-for="(header, index) in sortableHeaders" :key="index" @click="sort(header)">
-              {{ header }}
-              <span v-if="header === currentSortCol">
+            <th @click="sort('title')">
+              <span>Title</span>
+              <span v-if="'title' === currentSortCol">
                 <BaseIcon
                   :name="[currentSortDir === 'asc' ? 'sort-ascending' : 'sort-descending']"
                 />
               </span>
             </th>
+
+            <th class="whitespace-nowrap" @click="sort('vote_count')">
+              <span>Vote Count</span>
+              <span v-if="'vote_count' === currentSortCol">
+                <BaseIcon
+                  :name="[currentSortDir === 'asc' ? 'sort-ascending' : 'sort-descending']"
+                />
+              </span>
+            </th>
+
+            <th class="whitespace-nowrap" @click="sort('vote_average')">
+              <span>Vote Average</span>
+              <span v-if="'vote_average' === currentSortCol">
+                <BaseIcon
+                  :name="[currentSortDir === 'asc' ? 'sort-ascending' : 'sort-descending']"
+                />
+              </span>
+            </th>
+
+            <th @click="sort('overview')">
+              <span>Overview</span>
+              <span v-if="'overview' === currentSortCol">
+                <BaseIcon
+                  :name="[currentSortDir === 'asc' ? 'sort-ascending' : 'sort-descending']"
+                />
+              </span>
+            </th>
+
+            <th @click="sort('popularity')">
+              <span>Popularity</span>
+              <span v-if="'popularity' === currentSortCol">
+                <BaseIcon
+                  :name="[currentSortDir === 'asc' ? 'sort-ascending' : 'sort-descending']"
+                />
+              </span>
+            </th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          <MovieListItem :movie="movie" v-for="movie in paginatedMovies" :key="movie.id" />
+          <MovieTableRow :movie="movie" v-for="movie in paginatedMovies" :key="movie.id" />
+
           <tr v-if="paginatedMovies.length === 0">
             <td colspan="4">
               <div class="alert alert-warning">

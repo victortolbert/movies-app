@@ -11,12 +11,14 @@ export default {
 
 <template>
   <tr>
-    <td>
-      <button class="btn-primary btn-sm" @click="viewMovieDetails(movie)">{{ movie.title }}</button>
-    </td>
-    <td>{{ movie.vote_count }} / {{ movie.vote_average }}</td>
     <td>{{ movie.title }}</td>
+    <td>{{ movie.vote_count }}</td>
+    <td>{{ movie.vote_average }}</td>
     <td>{{ movie.overview }}</td>
     <td>{{ movie.popularity }}</td>
+    <td>
+      <button>{{ movie.isFavorite }}</button>
+      <button>Delete</button>
+    </td>
   </tr>
 </template>
