@@ -2,7 +2,8 @@
   "name": "@victortolbert/movies-app",
   "scripts": {
     "dev": "nuxt",
-    "build": "nuxt build"
+    "build": "nuxt build",
+    "generate": "nuxt generate"
   },
   "dependencies": {
     "@nuxtjs/axios": "5.13.1",

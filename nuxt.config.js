@@ -1,4 +1,5 @@
 export default {
+  target: 'static',
   components: true,
   axios: {
     baseURL: 'https://api.themoviedb.org/3',
