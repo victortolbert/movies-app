@@ -21,6 +21,8 @@ export default {
       }
     })
     this.totalResults = data.total_results
+  },
+  methods: {
   }
 }
 </script>
@@ -53,11 +55,14 @@ export default {
               <nav class="flex -mb-px space-x-8" aria-label="Tabs">
                 <button
                   @click="showFavorites = false"
-                  class="flex px-1 py-4 text-sm font-medium border-b-2 border-primary-500 text-primary-600 whitespace-nowrap"
+                  :class="[showFavorites === false ? 'border-primary-500 text-primary-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200']"
+                  class="flex px-1 py-4 text-sm font-medium border-b-2 whitespace-nowrap"
                 >All Movies</button>
+
                 <button
                   @click="showFavorites = true"
-                  class="flex px-1 py-4 text-sm font-medium text-gray-500 border-b-2 border-transparent hover:text-gray-700 hover:border-gray-200 whitespace-nowrap"
+                  :class="[showFavorites === true ? 'border-primary-500 text-primary-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200']"
+                  class="flex px-1 py-4 text-sm font-medium border-b-2 whitespace-nowrap"
                 >Favorite Movies</button>
               </nav>
 

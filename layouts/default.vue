@@ -1,8 +1,29 @@
 <template>
   <div class="flex flex-col min-h-screen p-8 bg-gray-100">
-    <Nuxt />
+    <Nuxt :key="$route.params.id" />
+    <PortalTarget name="overlays" />
   </div>
 </template>
+
+<script>
+export default {
+  name: 'DefaultLayout',
+  head() {
+    return {
+      title: '',
+      titleTemplate: chunk => {
+        if (chunk) {
+          return `${chunk} - Movies App`
+        }
+        return 'Movies App'
+      },
+      bodyAttrs: {
+        class: ['bg-gray-100 dark:bg-gray-800 antialiased'],
+      },
+    }
+  },
+}
+</script>
 
 <style>
 :root {

@@ -1,10 +1,13 @@
 <script>
+import { defineComponent } from '@nuxtjs/composition-api'
+import useMovies from '~/composables/useMovies'
+
 const tabs = [
   { name: 'All Movies', href: '#', count: '52', current: true },
   { name: 'Favorite Movies', href: '#', count: '6', current: false },
 ]
 
-export default {
+export default defineComponent({
   props: {
     movies: {
       type: Array,
@@ -31,6 +34,9 @@ export default {
     }
   },
   methods: {
+    removeMovie($event, id) {
+      this.filteredMovies = [...this.filteredMovies.filter(movie => movie.id !== id)]
+    },
     viewMovieDetails(movie) {
       this.$router.push(`/movies/${movie.id}`)
     },
@@ -93,7 +99,7 @@ export default {
       })
     }
   }
-}
+})
 </script>
 
 
@@ -192,7 +198,12 @@ export default {
               </thead>
 
               <tbody>
-                <MovieTableRow :movie="movie" v-for="movie in paginatedMovies" :key="movie.id" />
+                <MovieTableRow
+                  :movie="movie"
+                  v-for="movie in paginatedMovies"
+                  :key="movie.id"
+                  @remove="removeMovie"
+                />
 
                 <tr v-if="paginatedMovies.length === 0">
                   <td colspan="4">

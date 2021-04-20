@@ -15,7 +15,7 @@ export default {
   methods: {
     remove(id) {
       console.log(id)
-      this.$store.commit('REMOVE_MOVIE', id)
+      this.$emit('remove', id)
     }
   }
 }
