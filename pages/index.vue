@@ -27,8 +27,23 @@ export default {
 
 <template>
   <section class="w-full p-8 mx-auto bg-white shadow-lg rounded-m">
-    <p v-if="$fetchState.pending">Fetching movies...</p>
-    <p v-else-if="$fetchState.error">An error occurred</p>
+    <p v-if="$fetchState.pending">Fetching the the rated movies...</p>
+
+    <div v-else-if="$fetchState.error" class="space-y-4">
+      <p>I'm having an issue fetching the movies</p>
+      <ul>
+        <li>
+          Did you add your
+          <code>
+            <a
+              class="text-blue-500 hover:underline"
+              href="https://www.themoviedb.org/settings/api"
+            >TMDB_API_KEY</a>
+          </code>?
+        </li>
+        <li>Are you connected to the internet?</li>
+      </ul>
+    </div>
     <div v-else>
       <header class="pb-5 border-b border-gray-200">
         <h3 class="text-lg font-medium leading-6 text-gray-900">Movies List</h3>
@@ -53,11 +68,13 @@ export default {
               <nav class="flex -mb-px space-x-8" aria-label="Tabs">
                 <button
                   @click="showFavorites = false"
-                  class="flex px-1 py-4 text-sm font-medium border-b-2 border-primary-500 text-primary-600 whitespace-nowrap"
+                  :class="[showFavorites === false ? 'border-primary-500 text-primary-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200']"
+                  class="flex px-1 py-4 text-sm font-medium border-b-2 whitespace-nowrap"
                 >All Movies</button>
                 <button
                   @click="showFavorites = true"
-                  class="flex px-1 py-4 text-sm font-medium text-gray-500 border-b-2 border-transparent hover:text-gray-700 hover:border-gray-200 whitespace-nowrap"
+                  :class="[showFavorites === true ? 'border-primary-500 text-primary-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200']"
+                  class="flex px-1 py-4 text-sm font-medium border-b-2 whitespace-nowrap"
                 >Favorite Movies</button>
               </nav>
 
